@@ -1,0 +1,87 @@
+\documentclass[12pt]{m-thesis}
+
+\usepackage[dvipdfmx]{graphicx, color}
+\usepackage{amsmath}
+\usepackage{ascmac, amsthm, amssymb}
+\usepackage{booktabs}
+\usepackage{fancyvrb}
+\usepackage{here}
+\usepackage{listings}
+\usepackage{mediabb} 
+\usepackage{otf}
+\usepackage{siunitx}
+\usepackage{subcaption}
+\usepackage{tabularx}
+\usepackage{url}
+
+\lstset{
+  backgroundcolor={\color[gray]{.90}},
+  basicstyle={\ttfamily\small},
+  breaklines=true,
+  captionpos=b,
+  frame=tRBl,
+  keywordstyle={\ttfamily\small\bfseries},
+  language=C,
+  numbers=left,
+  numberstyle={\ttfamily\small},
+  showstringspaces=false,
+  tabsize=2
+}
+
+% \makeatletter
+% \def\lst@lettertrue{\let\lst@ifletter\iffalse}
+% \makeatother
+
+% \renewcommand{\lstlistingname}{コード}
+% \renewcommand{\lstlistlistingname}{コード目次}
+
+\begin{document}
+
+\input{cover}
+\input{abst_ja}
+\input{abst_en}
+\input{index}
+
+\pagestyle{headings}
+\setcounter{page}{1}
+\pagenumbering{arabic}
+
+\chapter{序論}
+\label{chap:intro}
+\input{intro}
+
+\chapter{関連研究}
+\label{chap:related_work}
+\input{related_work}
+
+\chapter{設計}
+\label{chap:design}
+\input{design}
+
+\chapter{実装}
+\label{chap:implement}
+\input{implement}
+
+\chapter{評価}
+\label{chap:eval}
+\input{eval}
+
+\chapter{結論}
+\label{chap:conclusion}
+\input{conclusion}
+
+\bibliographystyle{unsrt}
+\bibliography{references}
+
+\chapter*{謝辞}
+\label{chap:acknowledgments}
+\input{acknowledgments}
+\addcontentsline{toc}{chapter}{謝辞}
+
+% \appendix
+% \chapter{タイトル}
+% \label{chap:appendix}
+% \def\thechapter{\Alph{chapter}}
+% \input{appendix}
+
+\end{document}

@@ -1,0 +1,16 @@
+# Mac
+.DS_Store
+
+# LaTeX
+*.aux
+*.bbl
+*.blg
+*.dvi
+*.locode
+*.lof
+*.log
+*.lol
+*.lot
+/*.pdf
+*.synctex.gz
+*.toc
