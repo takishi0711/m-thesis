@@ -1,14 +1,14 @@
 # M Thesis Template
 
-## Overivew
+寺岡先生執筆の「[論文の書き方](https://drive.google.com/drive/u/1/folders/0B4kPLqAhIDvNRzhaQnd2Y05rb28)」をご参照ください．
+
+## Overview
 
 LaTeX template files of M thesis
-
 
 ## Requirements
 
 - LaTeX
-
 
 ## Compilation
 
@@ -19,7 +19,6 @@ $ platex mthesis
 $ platex mthesis
 $ dvipdfmx mthesis
 ```
-
 
 ## How to see diff in github.com
 
