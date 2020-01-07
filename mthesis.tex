@@ -2,12 +2,13 @@
 
 \usepackage[dvipdfmx]{graphicx, color}
 \usepackage{amsmath}
-\usepackage{ascmac, amsthm, amssymb}
+\usepackage{ascmac}
+\usepackage{amsthm}
+\usepackage{amssymb}
 \usepackage{booktabs}
 \usepackage{fancyvrb}
-\usepackage{here}
 \usepackage{listings}
-\usepackage{mediabb} 
+\usepackage{mediabb}
 \usepackage{otf}
 \usepackage{siunitx}
 \usepackage{subcaption}
@@ -38,8 +39,8 @@
 \begin{document}
 
 \input{cover}
-\input{abst_ja}
-\input{abst_en}
+\input{00-abst_ja}
+\input{00_1-abst_en}
 \input{index}
 
 \pagestyle{headings}
@@ -48,27 +49,27 @@
 
 \chapter{序論}
 \label{chap:intro}
-\input{intro}
+\input{01-intro}
 
 \chapter{関連研究}
 \label{chap:related_work}
-\input{related_work}
+\input{02-related_work}
 
 \chapter{設計}
 \label{chap:design}
-\input{design}
+\input{03-design}
 
 \chapter{実装}
 \label{chap:implement}
-\input{implement}
+\input{04-implement}
 
 \chapter{評価}
 \label{chap:eval}
-\input{eval}
+\input{05-eval}
 
 \chapter{結論}
 \label{chap:conclusion}
-\input{conclusion}
+\input{06-conclusion}
 
 \bibliographystyle{unsrt}
 \bibliography{references}
