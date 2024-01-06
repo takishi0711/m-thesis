@@ -238,3 +238,113 @@ keywords = {GPUs, communication optimizations, heterogeneous architectures, Dist
 location = {Philadelphia, PA, USA},
 series = {PLDI 2018}
 }
+
+@inproceedings{10.5555/3277180.3277185,
+author = {Iyer, Anand Padmanabha and Panda, Aurojit and Chowdhury, Mosharaf and Akella, Aditya and Shenker, Scott and Stoica, Ion},
+title = {Monarch: Gaining Command on Geo-Distributed Graph Analytics},
+year = {2018},
+publisher = {USENIX Association},
+address = {USA},
+abstract = {A number of existing and emerging application scenarios generate graph-structured data in a geo-distributed fashion. Although there is a lot of interest in distributed graph processing systems, none of them support geo-distributed graph processing. Geo-distributed analytics, on the other hand, has not focused on iterative workloads such as distributed graph processing.In this paper, we look at the problem of efficient geo-distributed graph analytics. We find that optimizing the iterative processing style of graph-parallel systems is the key to achieving this goal rather than extending existing geo-distributed techniques to graph processing. Based on this, we discuss our proposal on building MONARCH, the first system to our knowledge that focuses on geo-distributed graph processing. Our preliminary evaluation of MONARCH shows encouraging results.},
+booktitle = {Proceedings of the 10th USENIX Conference on Hot Topics in Cloud Computing},
+pages = {5},
+numpages = {1},
+location = {Boston, MA, USA},
+series = {HotCloud'18}
+}
+
+@INPROCEEDINGS{8486361,
+  author={Liu, Shuhao and Chen, Li and Li, Baochun and Carnegie, Aiden},
+  booktitle={IEEE INFOCOM 2018 - IEEE Conference on Computer Communications}, 
+  title={A Hierarchical Synchronous Parallel Model for Wide-Area Graph Analytics}, 
+  year={2018},
+  volume={},
+  number={},
+  pages={531-539},
+  doi={10.1109/INFOCOM.2018.8486361}}
+
+@inproceedings{10.1145/3397271.3401157,
+author = {Yuan, Ye and Ma, Delong and Wen, Zhenyu and Ma, Yuliang and Wang, Guoren and Chen, Lei},
+title = {Efficient Graph Query Processing over Geo-Distributed Datacenters},
+year = {2020},
+isbn = {9781450380164},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+url = {https://doi.org/10.1145/3397271.3401157},
+doi = {10.1145/3397271.3401157},
+abstract = {Graph queries have emerged as one of the fundamental techniques to support modern search services, such as PageRank web search, social networking search and knowledge graph search. As such graphs are maintained globally and very huge (e.g., billions of nodes), we need to efficiently process graph queries across multiple geographically distributed datacenters, running geo-distributed graph queries. Existing graph computing frameworks may not work well for geographically distributed datacenters, because they implement a Bulk Synchronous Parallel model that requires excessive inter-datacenter transfers, thereby introducing extremely large latency for query processing. In this paper, we propose GeoGraph --a universal framework to support efficient geo-distributed graph query processing based on clustering datacenters and meta-graph, while reducing the inter-datacenter communication. Our new framework can be applied to many types of graph algorithms without any modification. The framework is developed on the top of Apache Giraph. The experiments were conducted by applying four important graph queries, i.e., shortest path, graph keyword search, subgraph isomorphism and PageRank. The evaluation results show that our proposed framework can achieve up to 82\% faster convergence, 42\% lower WAN bandwidth usage, and 45\% less total monetary cost for the four graph queries, with input graphs stored across ten geo-distributed datacenters.},
+booktitle = {Proceedings of the 43rd International ACM SIGIR Conference on Research and Development in Information Retrieval},
+pages = {619–628},
+numpages = {10},
+keywords = {graph search, datacenters, geo-distributed},
+location = {Virtual Event, China},
+series = {SIGIR '20}
+}
+
+@article{334,
+title	= {The Anatomy of a Large-Scale Hypertextual Web Search Engine},
+author	= {Sergey Brin and Lawrence Page},
+year	= {1998},
+URL	= {http://www-db.stanford.edu/~backrub/google.html},
+journal	= {Computer Networks},
+pages	= {107-117},
+volume	= {30}
+}
+
+@inproceedings{10.5555/2535461.2535468,
+author = {Bronson, Nathan and Amsden, Zach and Cabrera, George and Chakka, Prasad and Dimov, Peter and Ding, Hui and Ferris, Jack and Giardullo, Anthony and Kulkarni, Sachin and Li, Harry and Marchukov, Mark and Petrov, Dmitri and Puzar, Lovro and Song, Yee Jiun and Venkataramani, Venkat},
+title = {TAO: Facebook's Distributed Data Store for the Social Graph},
+year = {2013},
+publisher = {USENIX Association},
+address = {USA},
+abstract = {We introduce a simple data model and API tailored for serving the social graph, and TAO, an implementation of this model. TAO is a geographically distributed data store that provides efficient and timely access to the social graph for Facebook's demanding workload using a fixed set of queries. It is deployed at Facebook, replacing memcache for many data types that fit its model. The system runs on thousands of machines, is widely distributed, and provides access to many petabytes of data. TAO can process a billion reads and millions of writes each second.},
+booktitle = {Proceedings of the 2013 USENIX Conference on Annual Technical Conference},
+pages = {49–60},
+numpages = {12},
+location = {San Jose, CA},
+series = {USENIX ATC'13}
+}
+
+@inproceedings{10.1145/3331184.3331252,
+author = {Lu, Xiaolu and Pramanik, Soumajit and Saha Roy, Rishiraj and Abujabal, Abdalghani and Wang, Yafang and Weikum, Gerhard},
+title = {Answering Complex Questions by Joining Multi-Document Evidence with Quasi Knowledge Graphs},
+year = {2019},
+isbn = {9781450361729},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+url = {https://doi.org/10.1145/3331184.3331252},
+doi = {10.1145/3331184.3331252},
+abstract = {Direct answering of questions that involve multiple entities and relations is a challenge for text-based QA. This problem is most pronounced when answers can be found only by joining evidence from multiple documents. Curated knowledge graphs (KGs) may yield good answers, but are limited by their inherent incompleteness and potential staleness. This paper presents QUEST, a method that can answer complex questions directly from textual sources on-the-fly, by computing similarity joins over partial results from different documents. Our method is completely unsupervised, avoiding training-data bottlenecks and being able to cope with rapidly evolving ad hoc topics and formulation style in user questions. QUEST builds a noisy quasi KG with node and edge weights, consisting of dynamically retrieved entity names and relational phrases. It augments this graph with types and semantic alignments, and computes the best answers by an algorithm for Group Steiner Trees. We evaluate QUEST on benchmarks of complex questions, and show that it substantially outperforms state-of-the-art baselines.},
+booktitle = {Proceedings of the 42nd International ACM SIGIR Conference on Research and Development in Information Retrieval},
+pages = {105–114},
+numpages = {10},
+keywords = {complex questions, group steiner trees, direct answers, question answering from the web},
+location = {Paris, France},
+series = {SIGIR'19}
+}
+
+@inproceedings{10.1145/2723372.2735365,
+author = {Vulimiri, Ashish and Curino, Carlo and Godfrey, Philip Brighten and Jungblut, Thomas and Karanasos, Konstantinos and Padhye, Jitendra and Varghese, George},
+title = {WANalytics: Geo-Distributed Analytics for a Data Intensive World},
+year = {2015},
+isbn = {9781450327589},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+url = {https://doi.org/10.1145/2723372.2735365},
+doi = {10.1145/2723372.2735365},
+abstract = {Many large organizations collect massive volumes of data each day in a geographically distributed fashion, at data centers around the globe. Despite their geographically diverse origin the data must be processed and analyzed as a whole to extract insight. We call the problem of supporting large-scale geo-distributed analytics Wide-Area Big Data (WABD). To the best of our knowledge, WABD is currently addressed by copying all the data to a central data center where the analytics are run. This approach consumes expensive cross-data center bandwidth and is incompatible with data sovereignty restrictions that are starting to take shape. We instead propose WANalytics, a system that solves the WABD problem by orchestrating distributed query execution and adjusting data replication across data centers in order to minimize bandwidth usage, while respecting sovereignty requirements. WANalytics achieves an up to 360x reduction in data transfer cost when compared to the centralized approach on both real Microsoft production workloads and standard synthetic benchmarks, including TPC-CH and Berkeley Big-Data. In this demonstration, attendees will interact with a live geo-scale multi-data center deployment of WANalytics, allowing them to experience the data transfer reduction our system achieves, and to explore how it dynamically adapts execution strategy in response to changes in the workload and environment.},
+booktitle = {Proceedings of the 2015 ACM SIGMOD International Conference on Management of Data},
+pages = {1087–1092},
+numpages = {6},
+keywords = {federation, olap, geo-distribution, sovereignty, analytics},
+location = {Melbourne, Victoria, Australia},
+series = {SIGMOD '15}
+}
+
+@misc{snapnets,
+  author       = {Jure Leskovec and Andrej Krevl},
+  title        = {{SNAP Datasets}: {Stanford} Large Network Dataset Collection},
+  howpublished = {\url{http://snap.stanford.edu/data}},
+  month        = jun,
+  year         = 2014
+}
