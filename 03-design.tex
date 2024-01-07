@@ -31,6 +31,50 @@ UDP 通信の他にも QUIC と呼ばれる UDP 通信を用いて高速化し�
 
 \section{Random Walker の構成}\label{Random Walker の構成}
 
+本節では提案手法における RWer の構成について述べる. 表 \ref{RWer の構成} に RWer の構成を示す. $ver\_id\_$ はバージョンとメッセージ ID を含んでおり, メッセージ ID によって, 生存している RWer, 終了した RWer, 複数の RWer が入っているパケットを識別する. この $ver\_id\_$ はメッセージの送受信におけるパケットにも付与するがその詳細については \ref{実装} 節で述べる. $flag\_$ では RW 処理をする上で必要となる情報をフラグとして保持する. 1 hop 前で通信が発生したかを保持しておくことで, その遷移先で経路情報における通信発生フラグを立てることができる. また, $next\_index\_$ に値が入っているかを保持しておくことで, \ref{Random Walker の経路再利用} 節で説明する送信先での index による遷移を行うことができる. そして全体を通して通信が発生したかを保持しておくことで, 終了した RWer を他のサーバに送信するかどうかを判断することができる. $RWer\_size\_$ は RWer 単体のメモリサイズを保持する. これはメッセージ送信時の複数の RWer をまとめる際に必要となる. $RWer\_id\_$ は RWer の識別 ID である. $RWer\_life\_$ は RW 演算における残り hop 数を保持する. 提案手法では RWer 生成時に経路長を先に計算する. 例えば各遷移ごとで確率 $\alpha (< 1)$ で終了する RW 演算であれば, $0 < r < 1$ の乱数を $r < \alpha$ となるまで生成し, その生成回数を経路長とする. この $RWer\_life\_$ はサーバ上で RWer の構造体を生成する際, 可変長配列である $path\_$ のメモリ確保に使用される. $path\_length\_at\_current\_host\_$ は RWer の現在の同一ホスト内における経路長を保持する. これは $path\_$ における現在ホスト情報の位置を特定する際に使用される. $next\_index\_$ は通信が発生したときの次の遷移先 index を示す. これは RWer の経路再利用機能で使用される. 
+
+\begin{table}[t]
+    \caption{RWer の構成}
+    \label{RWer の構成}
+    \centering
+    \begin{tabular}{ccc}
+        \hline
+        名称  &  サイズ  &  内容 \\
+        \hline \hline
+        $ver\_id\_$  &  8 bit  &  バージョン: 4 bit, メッセージ ID: 4 bit \\
+        \hline
+        $flag\_$  &  8 bit  & 
+        \begin{tabular}{c} 1 hop 前で通信が発生したか: 1 bit, \\$next\_index\_$ に値が入っているか: 1 bit, \\全体を通して通信が発生したか: 1 bit, \\予備: 5 bit 
+        \end{tabular}\\
+        \hline
+        $RWer\_size\_$  &  16 bit  &  RWer 単体のメモリサイズ \\
+        \hline
+        $RWer\_id\_$  &  32 bit  &  RWer の識別 ID \\
+        \hline
+        $RWer\_life\_$  &  16 bit  &  RWer の残り歩数  \\
+        \hline
+        $path\_length\_at\_current\_host\_$  &  16 bit  &  RWer の現在の同一ホスト内の経路長  \\
+        \hline
+        $reserved\_$  &  32 bit  &  予備  \\
+        \hline
+        $next\_index\_$  &  64 bit  &  通信が発生したときの次の遷移先 index \\
+        \hline
+        $path\_$  &  64 bit の可変長配列  &  経路情報  \\
+        \hline
+    \end{tabular}
+\end{table}
+
+図 \ref{経路情報の構成} に $path\_$ (経路情報) の構成を示す. $path\_$ は, ホスト情報 (64 bit), 頂点情報 (64 bit $\times$ 4), 頂点情報, ... , ホスト情報, 頂点情報, ... のように頂点情報をホストごとにグループ化する. これにより各頂点情報にその頂点を保有するホストの情報を入れる必要がなくなり, サイズを削減することができる. ホスト情報の構成は, HostID (48 bit), 同一 HostID 内の経路長 (15 bit), 通信が発生したかどうかのフラグ (1 bit) である. 同一 HostID 内の経路長は経路情報を前方から探索していく際に必要となる. 通信が発生したかどうかのフラグは, 経路再利用による通信スキップが発生しなかった場合の判定に利用できる. 頂点情報の構成は, 頂点 ID (64 bit), 次数 (64 bit), $u \rightarrow v$ の index (64 bit), $v \rightarrow u$ の index (64 bit) である. $u \rightarrow v$ の index はひとつ前の頂点から見た今の頂点の index 情報であり, $v \rightarrow u$ の index は今の頂点から見たひとつ前の頂点の index 情報である. 逆方向の index 情報を保持しておくことで, 無向グラフにおける逆向きの経路情報も再利用することができる. 次数情報は経路再利用時に使用されるため頂点情報に含まれている. 
+
+\begin{figure}[t]
+    \centering
+    \includegraphics[scale=0.5]{figure/path.pdf}
+    \caption{経路情報の構成}
+    \label{経路情報の構成}
+\end{figure}
+
 \section{Random Walker の経路再利用}\label{Random Walker の経路再利用}
+
+
 
 \section{実装}\label{実装}
